@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Figures from './Data.jsx';
 
 class Stock extends React.Component {
                 
@@ -7,7 +8,8 @@ class Stock extends React.Component {
         super(props);
         this.state = {
             stock : '',
-            allStock : []
+            allStock : [],
+            result : []
         }
     }
                 
@@ -24,6 +26,24 @@ class Stock extends React.Component {
             allStock : this.state.allStock.concat(element)
         });
     }
+     
+    componentDidMount(){
+        /*
+        fetch('/')
+            .then((response) => response.json())
+            .then((posts) => this.setState({
+                posts: posts,
+             }));
+        */
+        
+        this.UserList();
+    }
+     
+    /* 
+    UserList = () => {
+        $.getJSON('https://randomuser.me/api/').then(({ results }) => this.setState({ result: results }));
+    }
+    */
                 
     render() {
         return (
@@ -32,8 +52,10 @@ class Stock extends React.Component {
                     <input onChange = {this.stockAdd} value = {this.state.stock} />
                     <button type = 'submit'>Submit! </button>
                 </form>
+                
                 <p> New Added: {this.state.stock} </p>
                 <p> All : {this.state.allStock} </p>
+                <Figures input={this.state.stock}/>
             </div>
         );
     }
