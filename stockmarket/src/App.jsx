@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Figures from './Data.jsx';
+import "isomorphic-fetch";
 
 class Stock extends React.Component {
                 
@@ -9,7 +10,7 @@ class Stock extends React.Component {
         this.state = {
             stock : '',
             allStock : [],
-            result : []
+            result : ''
         }
     }
                 
@@ -26,36 +27,36 @@ class Stock extends React.Component {
             allStock : this.state.allStock.concat(element)
         });
     }
-     
+    
+    
     componentDidMount(){
-        /*
-        fetch('/')
-            .then((response) => response.json())
-            .then((posts) => this.setState({
-                posts: posts,
-             }));
-        */
         
-        this.UserList();
+        fetch('/myapi')
+            .then(function(response) { return response.json(); })
+            .then(function(data) {
+                console.log(data.insert);
+             })
+             
+       
+    }
+    
+    tell = () => {
+        console.log(process.env.NODE_ENV);
     }
      
-    /* 
-    UserList = () => {
-        $.getJSON('https://randomuser.me/api/').then(({ results }) => this.setState({ result: results }));
-    }
-    */
                 
     render() {
         return (
             <div>
                 <form onSubmit = {this.submit}>
                     <input onChange = {this.stockAdd} value = {this.state.stock} />
-                    <button type = 'submit'>Submit! </button>
+                    <button onClick={this.tell} type = 'submit'>Submit! </button>
                 </form>
                 
                 <p> New Added: {this.state.stock} </p>
                 <p> All : {this.state.allStock} </p>
                 <Figures input={this.state.stock}/>
+                <p> Express: {this.state.result.insert} </p>
             </div>
         );
     }

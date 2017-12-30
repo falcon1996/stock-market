@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "es6-promise": "^4.2.2",
+    "isomorphic-fetch": "^2.2.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.0.17"
@@ -17,5 +19,6 @@
   "main": "index.js",
   "devDependencies": {},
   "author": "falcon1996",
-  "license": "MIT"
+  "license": "MIT",
+  "proxy": "https://stock-market1-dhruvparashar.c9users.io:8081/"
 }

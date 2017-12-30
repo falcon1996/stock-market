@@ -18,9 +18,10 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
 
-app.get('/', function(req, res) {                   
-    res.sendFile(__dirname + '/public/simple.html');
+app.get('/myapi', function(req, res) {    
     
+    //res.sendFile(__dirname + '/public/simple.html');
+    /*
     yahooFinance.historical({
         symbol: 'AAPL',
         from: '2017-01-01',
@@ -28,7 +29,12 @@ app.get('/', function(req, res) {
         period: 'm'  // 'd' (daily), 'w' (weekly), 'm' (monthly), 'v' (dividends only)
     }, function (err, quotes) {
         console.log(quotes);
+        res.send(quotes);
     });
+    */
+    console.log('Got it!');
+    res.json({insert: "success"});
+    
 });
 
 http.createServer(app).listen(8081, function(){
