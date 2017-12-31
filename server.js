@@ -21,19 +21,19 @@ app.use(express.static(__dirname + '/public'));
 app.get('/myapi', function(req, res) {    
     
     //res.sendFile(__dirname + '/public/simple.html');
-    /*
+    
     yahooFinance.historical({
         symbol: 'AAPL',
         from: '2017-01-01',
         to: '2017-12-30',
         period: 'm'  // 'd' (daily), 'w' (weekly), 'm' (monthly), 'v' (dividends only)
     }, function (err, quotes) {
-        console.log(quotes);
-        res.send(quotes);
+        console.log(typeof(JSON.stringify(quotes)));
+        res.json(quotes);
     });
-    */
+    
     console.log('Got it!');
-    res.json({insert: "success"});
+    //res.json({insert: "success"});
     
 });
 

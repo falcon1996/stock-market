@@ -10,7 +10,7 @@ class Stock extends React.Component {
         this.state = {
             stock : '',
             allStock : [],
-            result : ''
+            result : []
         }
     }
                 
@@ -32,16 +32,27 @@ class Stock extends React.Component {
     componentDidMount(){
         
         fetch('/myapi')
-            .then(function(response) { return response.json(); })
-            .then(function(data) {
-                console.log(data.insert);
+            .then( (response) => {return response.json(); })
+            .then( (data) => {
+                
+                //console.log(data[0].high);
+                var output = []
+                for(var i=0; i<12; i++){
+                    console.log(data[i].high);
+                    output.push(data[i].high)
+                }
+                
+        		this.setState({
+        		    
+                    result : this.state.result.concat([output])
+                });
+        		
              })
-             
-       
     }
     
     tell = () => {
         console.log(process.env.NODE_ENV);
+        console.log(this.state.result);
     }
      
                 
@@ -56,7 +67,7 @@ class Stock extends React.Component {
                 <p> New Added: {this.state.stock} </p>
                 <p> All : {this.state.allStock} </p>
                 <Figures input={this.state.stock}/>
-                <p> Express: {this.state.result.insert} </p>
+                <p> Express: {this.state.result[0]} </p>
             </div>
         );
     }
