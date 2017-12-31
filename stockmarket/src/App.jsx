@@ -29,13 +29,19 @@ class Stock extends React.Component {
     }
     
     
-    componentDidMount(){
+    getdata = () => {
         
-        fetch('/myapi')
+        fetch('/myapi',{
+            method: 'POST',
+            body: JSON.stringify({
+                myquery: this.state.stock
+            }),
+            headers: {"Content-Type": "application/json"}
+        })
             .then( (response) => {return response.json(); })
             .then( (data) => {
                 
-                //console.log(data[0].high);
+                //Data is being collected for highest price point in month.
                 var output = []
                 for(var i=0; i<12; i++){
                     console.log(data[i].high);
@@ -61,7 +67,7 @@ class Stock extends React.Component {
             <div>
                 <form onSubmit = {this.submit}>
                     <input onChange = {this.stockAdd} value = {this.state.stock} />
-                    <button onClick={this.tell} type = 'submit'>Submit! </button>
+                    <button onClick={this.getdata} type = 'submit'>Submit! </button>
                 </form>
                 
                 <p> New Added: {this.state.stock} </p>
