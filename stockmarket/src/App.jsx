@@ -44,12 +44,11 @@ class Stock extends React.Component {
                 //Data is being collected for highest price point in month.
                 var output = []
                 for(var i=0; i<12; i++){
-                    console.log(data[i].high);
+                    //console.log(data[i].high);
                     output.push(data[i].high)
                 }
                 
         		this.setState({
-        		    
                     result : this.state.result.concat([output])
                 });
         		
@@ -72,8 +71,8 @@ class Stock extends React.Component {
                 
                 <p> New Added: {this.state.stock} </p>
                 <p> All : {this.state.allStock} </p>
-                <Figures input={this.state.stock}/>
                 <p> Express: {this.state.result[0]} </p>
+                <Figures input={this.state.result[0]}/>
             </div>
         );
     }
