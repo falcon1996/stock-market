@@ -49,7 +49,7 @@ class Stock extends React.Component {
                 }
                 
         		this.setState({
-                    result : this.state.result.concat([output])
+                    result : this.state.result.concat(output)
                 });
         		
              })
@@ -64,15 +64,19 @@ class Stock extends React.Component {
     render() {
         return (
             <div>
-                <form onSubmit = {this.submit}>
-                    <input onChange = {this.stockAdd} value = {this.state.stock} />
-                    <button onClick={this.getdata} type = 'submit'>Submit! </button>
-                </form>
                 
-                <p> New Added: {this.state.stock} </p>
-                <p> All : {this.state.allStock} </p>
-                <p> Express: {this.state.result[0]} </p>
-                <Figures input={this.state.result[0]}/>
+                <p style={{color:"black", fontSize: 30, marginLeft: 20}}> New Added: {this.state.stock} </p>
+                <p style={{color:"black", fontSize: 30, marginLeft: 20}}> All : {this.state.allStock} </p>
+                {/*<p> Express: {this.state.result} </p> */}
+                <Figures input={this.state.result}/>
+                
+                <br /> <br /> <br />
+                <form onSubmit = {this.submit} >
+                    <div class="form-group col-xs-5 col-lg-5">
+                        <input onChange = {this.stockAdd} value = {this.state.stock} placeholder="Enter stock name" class="form-control"/>
+                        <button onClick={this.getdata} type = 'submit' class="btn btn-success">Submit! </button>
+                    </div>
+                </form>
             </div>
         );
     }

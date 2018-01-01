@@ -13,10 +13,10 @@ class Figures extends React.Component {
         this.state = {
             chartData : {
                 
-            	labels: ["jan", "feb", "mar", "apr", "may", "june","july", "aug", "sep", "oct", "nov", "dec"],
+            	labels: ["Jan", "Feb", "Mar", "Apr", "May", "June","July", "Aug", "Sep", "Oct", "Nov", "Dec"],
             	datasets: [
             		{
-            			label: "Team points",
+            			label: "Highest Stock Prices",
             			data: [],
             			//backgroundColor: ["#4DB6AC", "#E57373", "#7986CB", "#F06292", "#E0E0E0"]
             		}
@@ -38,8 +38,8 @@ class Figures extends React.Component {
                 	datasets: [
                 		{
                 			label: "High Stock Price",
-                			data: this.state.chartData.datasets[0].data.concat(nextProps.input)
-                			//backgroundColor: ["#4DB6AC", "#E57373", "#7986CB", "#F06292", "#E0E0E0"]
+                			data: this.state.chartData.datasets[0].data.concat(nextProps.input),
+                			backgroundColor: ["#9633FF"]
                 		}
                 	]
                 }
@@ -50,7 +50,7 @@ class Figures extends React.Component {
     render() {
         return(
             <div>
-                <Bar
+                <Line
                 	data={this.state.chartData}
                 	
                 	
